@@ -45,10 +45,16 @@ b()
 
 c<-print(as.numeric(readline("Enter no: "))*10)
 
+c1<-function(z){
+  z<-as.integer(readline("Enter number: "))
+  x<-z*10
+  print(x)
+}
+c1()
 
 #if-else----------------------------------------------
 
-score<-29
+score<-78
 
 if(score>=75){
   print("A")
@@ -176,19 +182,6 @@ z<-function(n){
 }
 z()
 
-
-z<-function(n){
-  n<-as.integer(readline("Enter the number: "))
-  for(i in 1:n){
-    for(s in (n-1):0){
-      print(noquote(paste(strrep(" ",s),strrep("#",i))))
-      s<-s-1
-      i<-i+1
-    }
-    break
-  }
-}
-z()
 
 
 #function----------------------------------------------
@@ -320,6 +313,7 @@ b<-matrix(9:16,nrow = 2)
 c<-matrix(9:16,nrow = 4)
 print(a)
 print(b)
+print(c)
 
 print(a*b)
 print(a%*%c)
@@ -327,7 +321,7 @@ print(a%*%c)
 d<-matrix(1:4,nrow = 2)
 print(d)
 solve(d)   #inverse
-solve(a,c)  #error, a must be square matrix
+solve(a)  #error, a must be square matrix
 #----------------------------------------------DataFrame----------------------------------------------
 
 
@@ -367,9 +361,46 @@ set.seed(5)
 sample(1:40,10)
 
 #Array----------------------------------------------
-
-a<-array(1:15,dim = c(5,3))
+a<-array(1:15,dim = c(5,3),dimnames = list(101:105,201:203))
 print(a)  # same as matrix operators
 
+?array
 
 
+#Probability Distribution----------------------------------------------
+
+#Pr(x<=18) when ~N(20,sd=4.2)
+
+pnorm(18,20,4.2)       #p=probability  cdf
+qnorm(0.25,20,4.2)     #q=quantile
+
+#Pr(x<=10) when ~N(12.5,var=3.5)
+
+pnorm(10,12.5,sqrt(3.5))
+
+#Pr(x>18) when ~N(12.5,var=3.5)
+
+pnorm(18,12.5,sqrt(3.5),lower.tail = FALSE)
+
+#75% percentile
+
+qnorm(0.75,12.5,sqrt(3.5))
+
+#Generating a vector of 20 normally distributed random variables with mean=10 and sd=2
+
+rnorm(20,10,2)    #r=random
+
+#Value of the standard normal distribution pdf at x=1
+
+dnorm(1,0,1)
+
+
+#Generate 20 random values which are distributed Normal with mean 15 and variance 9
+
+rnorm(20,15,sqrt(9))
+
+#Draw a histogram using 100 random values which are distributed Normal with mean 100 and variance 225
+
+x<-rnorm(100,100,15)
+hist(x)
+hist(x,probability = TRUE)
