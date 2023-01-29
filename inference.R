@@ -31,7 +31,7 @@ t.test(A,B,mu=0,paired = TRUE,var.equal = TRUE)
 cars
 
 plot(x=cars$speed, y=cars$dist, main="Dist ~ Speed")
-scatter.smooth(x=cars$speed, y=cars$dist, main="Dist ~ Speed")   #line
+scatter.smooth(x=cars$speed, y=cars$dist, main="Dist ~ Speed")   #add smooth curve
 ?plot
 ?scatter.smooth
 par(mfrow=c(1, 1))
